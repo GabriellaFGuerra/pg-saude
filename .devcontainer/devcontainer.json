@@ -1,0 +1,26 @@
+{
+    "name": "Consultório Medico Dev",
+    "image": "mcr.microsoft.com/devcontainers/php:8.2",
+    "features": {
+        "ghcr.io/devcontainers/features/mysql:1": {
+            "version": "8.0",
+            "databaseName": "consultorio_db",
+            "databaseUser": "usuario",
+            "databasePassword": "password"
+        },
+        "ghcr.io/yassinedoghri/devcontainers/php-extensions-installer:1": {
+            "extensions": "mysqli,pdo_mysql,intl,gd,zip"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "onecentlin.laravel-blade",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "bmewburn.vscode-intelephense-client"
+            ]
+        }
+    },
+    "forwardPorts": [8000, 3306],
+    "postCreateCommand": "cp .env.example .env && composer install && php artisan key:generate"
+}
