@@ -22,11 +22,14 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('mother')->nullable();
             $table->string('father')->nullable();
-            
+            $table->foreignId('address_id')->constrained()->onDelete('set null')->nullable();
+            $table->string('complement')->nullable();
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
