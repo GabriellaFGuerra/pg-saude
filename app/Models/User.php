@@ -21,7 +21,17 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'cpf',
+        'gender',
+        'birth_date',
+        'phone_number',
+        'mother',
+        'father',
+        'address_id',
+        'complement',
+        'role_id',
         'password',
+
     ];
 
     /**
@@ -45,5 +55,35 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    public function appointmentsAsPatient()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id');
+    }
+
+    public function appointmentsAsProvider()
+    {
+        return $this->hasMany(Appointment::class, 'provider_id');
+    }
+
+    public function chartsAsPatient()
+    {
+        return $this->hasMany(Chart::class, 'patient_id');
+    }
+
+    public function chartsAsProvider()
+    {
+        return $this->hasMany(Chart::class, 'provider_id');
     }
 }
