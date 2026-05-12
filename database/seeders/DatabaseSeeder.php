@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             ServiceSeeder::class,
             RolesServicesSeeder::class,
+            AddressSeeder::class,
         ]);
     }
 }

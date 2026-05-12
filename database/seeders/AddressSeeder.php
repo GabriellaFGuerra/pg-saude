@@ -25,8 +25,6 @@ class AddressSeeder extends Seeder
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ]);
-
-            $this->command->info($address->zip_code);
         }
     }
 }
